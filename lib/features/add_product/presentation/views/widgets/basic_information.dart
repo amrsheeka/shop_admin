@@ -28,7 +28,7 @@ class BasicInformation extends StatelessWidget {
                 width: double.infinity,
                 decoration: Styles.contentDecoration,
                 child: Padding(
-                  padding: Styles.contentPadding,
+                  padding: Styles.subContentPadding,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

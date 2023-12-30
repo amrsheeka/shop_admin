@@ -1,7 +1,6 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shop_admin/core/utils/styles.dart';
 import 'package:shop_admin/features/main_layout/presentation/cubit/main_layout_cubit.dart';
 import 'package:shop_admin/features/main_layout/presentation/cubit/main_layout_states.dart';
 import 'package:shop_admin/features/main_layout/presentation/views/widgets/side_bar.dart';

@@ -9,6 +9,7 @@ class Styles{
   static HexColor backgroundColor = HexColor("#f3f0f7");
   static EdgeInsets mainPadding =const EdgeInsets.only(top: 10,left: 20,right: 20);
   static EdgeInsets contentPadding = const EdgeInsets.all(20.0);
+  static EdgeInsets subContentPadding = const EdgeInsets.all(10.0);
   static BoxDecoration mainBoxDecoration = BoxDecoration(
       boxShadow: const [
         BoxShadow(
