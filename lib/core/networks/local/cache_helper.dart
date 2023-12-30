@@ -1,25 +1,19 @@
-import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:universal_html/html.dart';
 
 class CacheHelper{
- static SharedPreferences? sharedPreferences;
+   late Storage myPref;
 
- static init()async{
-   sharedPreferences=await SharedPreferences.getInstance();
- }
- static Future<bool>? putData({required key,required value}){
-   if(value is int){
-     return sharedPreferences?.setInt(key, value);
-   }else if(value is String){
-     return sharedPreferences?.setString(key, value);
-   }else if(value is double) {
-     return sharedPreferences?.setDouble(key, value);
+  CacheHelper(){
+   myPref = window.localStorage;
+  }
+   void putData({required key,required value}){
+   myPref[key]=value;
+  }
+   dynamic getData({required key}){
+    return myPref[key];
    }
-   return sharedPreferences?.setBool(key, value);
- }
- static dynamic getData({required key}){
-   return sharedPreferences?.get(key);
- }
- static Future<bool>? deleteData({required key}){
-   return sharedPreferences?.remove(key);
- }
+   void deleteData({required key}){
+    myPref.remove(key);
+   }
 }
