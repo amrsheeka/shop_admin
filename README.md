@@ -1,6 +1,6 @@
 # shop_admin
 
-A new Flutter project.
+A new Flutter web application project.
 
 ## Getting Started
 
