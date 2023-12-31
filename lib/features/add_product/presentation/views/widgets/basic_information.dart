@@ -32,7 +32,7 @@ class BasicInformation extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Product name',style: TextStyles.subtitle,),
+                      Text('Product Name',style: TextStyles.subtitle,),
                       defaultFormField(
                         label: 'Enter the product name',
                         controller: name,

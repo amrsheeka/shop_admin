@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_admin/features/main_layout/presentation/cubit/main_layout_cubit.dart';
-import 'package:shop_admin/features/main_layout/presentation/cubit/main_layout_states.dart';
+import 'package:shop_admin/features/main_layout/presentation/cubit/states.dart';
 import 'package:shop_admin/features/main_layout/presentation/views/widgets/side_bar.dart';
 
 class MainLayout extends StatelessWidget {
@@ -11,7 +11,7 @@ class MainLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) =>MainLayoutCubit(),
+      create: (BuildContext context) =>MainLayoutCubit()..getCategories(),
       child: BlocConsumer<MainLayoutCubit,MainLayoutState>(
         listener: (context, state) {
 

@@ -1,8 +1,10 @@
 
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_admin/features/add_product/presentation/cubit/add_product_cubit.dart';
 import 'package:shop_admin/features/add_product/presentation/cubit/states.dart';
+import '../../../../../core/utils/icon_broken.dart';
 import '../../../../../core/utils/styles.dart';
 import '../../../../../core/utils/text_styles.dart';
 
@@ -39,17 +41,17 @@ class ProductImages extends StatelessWidget {
                                 scrollDirection: Axis.horizontal,
                                 itemBuilder: (context, index) => Padding(
                                   padding: const EdgeInsets.only(top: 10.0,left: 10,bottom: 10.0),
-                                  child: Container(
+                                  child: SizedBox(
                                     width: 100,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                          image: NetworkImage(cubit.imageURLs[index]),
-                                        )
+                                    child: ConditionalBuilder(
+                                      condition: cubit.imageFiles[index]!=null,
+                                      builder: (BuildContext context) =>Image.memory(cubit.imageFiles[index]!),
+                                      fallback: (BuildContext context) =>const Placeholder(),
                                     ),
                                   ),
                                 ),
                                 separatorBuilder: (BuildContext context, int index) =>const SizedBox(width: 10,),
-                                itemCount: cubit.imageURLs.length,
+                                itemCount: cubit.imageFiles.length,
                               ),
                             ),
                           ),
@@ -62,12 +64,12 @@ class ProductImages extends StatelessWidget {
                               ),
                               child: InkWell(
                                 onTap: (){
-                                  cubit.uploadImage();
+                                  cubit.pickImage();
                                 },
                                 child: const Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Icon(Icons.add,color: Styles.mainColor,),
+                                    Icon(IconBroken.Plus,color: Styles.mainColor,),
                                     Text('Add Image',style: TextStyle(color: Styles.mainColor),),
                                   ],
                                 ),
