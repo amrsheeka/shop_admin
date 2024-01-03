@@ -3,20 +3,24 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 enum ToastType { ERROR, SUCCESS, WARNING }
 void showToast({required String message, required ToastType type}) {
-  Color? color;
+  String? color;
   Color? textColor = Colors.white;
   if (type == ToastType.SUCCESS) {
-    color = Colors.green;
+    color = 'green';
   } else if (type == ToastType.WARNING) {
-    color = Colors.yellow;
+    color = 'yellow';
     textColor = Colors.black;
   }
   if (type == ToastType.ERROR) {
-    color = Colors.red;
+    color = 'red';
   }
   Fluttertoast.showToast(
       msg: message,
       textColor: textColor,
-      backgroundColor: color,
+      webBgColor: color,
+      webPosition: 'center',
+      webShowClose: true,
+      timeInSecForIosWeb: 30,
+      gravity: ToastGravity.TOP,
       toastLength: Toast.LENGTH_LONG);
 }

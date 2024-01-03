@@ -20,8 +20,12 @@ class AddProductCubit extends Cubit<AddProductState> {
     FilePickerResult? pickerResult;
     try{
       pickerResult = await ImageRepo.pickImage();
-      pickerResult!=null?imageFiles.add(pickerResult.files.first.bytes):null;
-      emit(PickImageSuccessState());
+      if(pickerResult!=null){
+        imageFiles.add(pickerResult.files.first.bytes);
+        emit(PickImageSuccessState());
+      }else{
+        throw 'No image selected';
+      }
       return pickerResult;
     }catch(error){
       emit(AddImageErrorState('No image selected'));

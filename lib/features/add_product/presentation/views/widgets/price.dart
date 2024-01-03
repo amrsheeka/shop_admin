@@ -34,25 +34,32 @@ class Price extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('Product Price',style: TextStyles.subtitle,),
                             defaultFormField(
                                 label: 'Enter the product price',
                                 controller: price,
-                                prefixIcon: const Icon(Icons.price_check)
+                                prefixIcon: const Icon(Icons.price_check),
+                                digital:true
                             ),
                           ],
                         ),
                       ),
                       const SizedBox(width: 10,),
+                      const VerticalDivider(thickness: 1, width: 1),
+                      const SizedBox(width: 10,),
                       Expanded(
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text('Product Old Price',style: TextStyles.subtitle,),
                             defaultFormField(
                                 label: 'Enter the product old price',
                                 controller: oldPrice,
-                                prefixIcon: const Icon(Icons.price_change)
+                                prefixIcon: const Icon(Icons.price_change),
+                                keyboardType: TextInputType.number,
+                                digital:true
                             ),
                           ],
                         ),

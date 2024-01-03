@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../utils/styles.dart';
 
 Widget defaultFormField(
     {onPressed,
       void Function(String)? onChanged,
       maxLines = 1,
-      suffixIcon,
-      prefixIcon,
-      keyboardType,
+      Icon? suffixIcon,
+      Icon? prefixIcon,
+      TextInputType? keyboardType,
       String? initialValue,
-      obscureText = false,
+      bool obscureText = false,
       EdgeInsets? contentPadding,
       required String label,
+      bool digital=false,
       String? Function(String?)? validator,
       TextEditingController? controller}) =>
     TextFormField(
@@ -22,11 +24,13 @@ Widget defaultFormField(
       keyboardType: keyboardType,
       initialValue: initialValue,
       onChanged: onChanged,
+      inputFormatters: digital?<TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly
+      ]:null,
       decoration: InputDecoration(
         contentPadding: prefixIcon !=null?const EdgeInsets.symmetric(vertical: 15):const EdgeInsets.all(15),
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
-
         prefixIconColor: Styles.mainColor,
         focusColor: Styles.mainColor,
         iconColor: Styles.mainColor,

@@ -101,7 +101,7 @@ class AddProductScreen extends StatelessWidget {
         },
         listener: (context, state) {
           if(state is AddProductErrorState){
-            showToast(message: state.message, type: ToastType.ERROR);
+            showToast(message: state.message, type: ToastType.WARNING);
           }
         },
       ),
