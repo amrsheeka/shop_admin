@@ -35,6 +35,12 @@ class BasicInformation extends StatelessWidget {
                       Text('Product Name',style: TextStyles.subtitle,),
                       defaultFormField(
                         label: 'Enter the product name',
+                        validator: (value){
+                          if(value!.isEmpty){
+                            return 'Enter a valid the product name';
+                          }
+                          return null;
+                        },
                         controller: name,
                         prefixIcon: const Icon(Icons.title)
                       ),
@@ -42,15 +48,34 @@ class BasicInformation extends StatelessWidget {
                       Text('Description',style: TextStyles.subtitle,),
                       defaultFormField(
                           label: 'Enter the product description',
+                          validator: (value){
+                            if(value!.isEmpty){
+                              return 'Enter a valid the product description';
+                            }
+                            return null;
+                          },
                           controller: description,
                           prefixIcon: const Icon(Icons.description)
                       ),
                       const SizedBox(height: 10,),
-                      Text('Details',style: TextStyles.subtitle,),
-                      defaultFormField(
-                        label: 'Enter the product details',
-                        controller: details,
-                        maxLines: 5
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Details',style: TextStyles.subtitle,),
+                            defaultFormField(
+                              label: 'Enter the product details',
+                                validator: (value){
+                                  if(value!.isEmpty){
+                                    return 'Enter a valid the product details';
+                                  }
+                                  return null;
+                                },
+                              controller: details,
+                              maxLines: 5
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

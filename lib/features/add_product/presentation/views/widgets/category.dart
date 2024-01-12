@@ -14,6 +14,7 @@ class Category extends StatelessWidget {
   const Category({Key? key, required this.categoryName}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    var formKey = GlobalKey<FormState>();
     return BlocConsumer<AddProductCubit,AddProductState>(
         builder: (context, state) {
           AddProductCubit cubit = AddProductCubit.get(context);
@@ -90,26 +91,29 @@ class Category extends StatelessWidget {
                                 }),
                             const SizedBox(height: 10,),
                             Text('Add New Category',style: TextStyles.subtitle,),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: defaultFormField(
-                                      label: 'Enter your new category',
-                                      prefixIcon: const Icon(Icons.category_outlined),
-                                      controller: categoryName,
-                                    validator: (value) {
-                                      if(value!.isEmpty){
-                                        return 'Enter a valid category';
-                                      }
-                                      return null;
-                                    },
+                            Form(
+                              key: formKey,
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: defaultFormField(
+                                        label: 'Enter your new category',
+                                        prefixIcon: const Icon(Icons.category_outlined),
+                                        controller: categoryName,
+                                      validator: (value) {
+                                        if(value!.isEmpty){
+                                          return 'Enter a valid category';
+                                        }
+                                        return null;
+                                      },
+                                    ),
                                   ),
-                                ),
-                                IconButton(
-                                    onPressed: (){},
-                                    icon: const Icon(IconBroken.Plus,color: Styles.mainColor,),
-                                ),
-                              ],
+                                  IconButton(
+                                      onPressed: (){},
+                                      icon: const Icon(IconBroken.Plus,color: Styles.mainColor,),
+                                  ),
+                                ],
+                              ),
                             ),
 
                           ],

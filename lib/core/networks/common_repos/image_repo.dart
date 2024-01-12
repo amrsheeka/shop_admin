@@ -11,7 +11,7 @@ class ImageRepo{
     );
     return pickedImage;
   }
-  static Future<String?> uploadImage (String id,pickedImage)async {
+  static Future<String?> uploadImage (String id,FilePickerResult pickedImage)async {
     String? res;
     try{
       Uint8List? uploadFile = pickedImage.files.single.bytes;
@@ -25,7 +25,7 @@ class ImageRepo{
         });
       }
     }catch(error){
-      return null;
+      throw 'Failed to upload the image ${pickedImage.files.single.name}';
     }
     return res;
 

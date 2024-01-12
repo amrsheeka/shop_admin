@@ -22,7 +22,6 @@ class MainLayoutCubit extends Cubit<MainLayoutState>{
     emit(GetCategoriesLoadingState());
     try{
       Constants.categories = await CategoriesRepo.getCategories();
-      print(Constants.categories);
       emit(GetCategoriesSuccessState());
     }catch(error){
       print(error);

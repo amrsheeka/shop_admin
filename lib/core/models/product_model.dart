@@ -9,6 +9,10 @@ class ProductModel{
   late double rate = 0;
   late int numberOfRatings=0;
   List<dynamic>images=[];
+
+  ProductModel(this.name, this.description, this.details, this.type, this.price,
+      this.oldPrice, this.images);
+
   ProductModel.fromJson({required json}){
     id=json['id'];
     name=json['name'];

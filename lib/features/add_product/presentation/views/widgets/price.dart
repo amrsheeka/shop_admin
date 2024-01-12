@@ -39,6 +39,12 @@ class Price extends StatelessWidget {
                             Text('Product Price',style: TextStyles.subtitle,),
                             defaultFormField(
                                 label: 'Enter the product price',
+                                validator: (value){
+                                  if(value!.isEmpty){
+                                    return 'Enter a valid product price';
+                                  }
+                                  return null;
+                                },
                                 controller: price,
                                 prefixIcon: const Icon(Icons.price_check),
                                 digital:true
@@ -53,9 +59,15 @@ class Price extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Product Old Price',style: TextStyles.subtitle,),
+                            Text('Old Price',style: TextStyles.subtitle,),
                             defaultFormField(
                                 label: 'Enter the product old price',
+                                validator: (value){
+                                  if(value!.isEmpty){
+                                    return 'Enter a valid product old price';
+                                  }
+                                  return null;
+                                },
                                 controller: oldPrice,
                                 prefixIcon: const Icon(Icons.price_change),
                                 keyboardType: TextInputType.number,

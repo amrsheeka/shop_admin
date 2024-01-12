@@ -9,3 +9,6 @@ class AddImageErrorState extends AddProductErrorState{
 class AddCategoryErrorState extends AddProductErrorState{
   AddCategoryErrorState(super.message);
 }
+class UploadProductErrorState extends AddProductErrorState{
+  UploadProductErrorState(super.message);
+}
