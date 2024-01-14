@@ -11,7 +11,7 @@ import 'states.dart';
 class MainLayoutCubit extends Cubit<MainLayoutState>{
   MainLayoutCubit():super(InitialState());
   static MainLayoutCubit get(context) => BlocProvider.of(context);
-  int currentIndex = 1;
+  int currentIndex = 2;
   List<Widget> screens = [const HomeScreen(), const AddProductScreen(), const OrdersScreen()];
   void changeIndex(int index) {
     currentIndex = index;
